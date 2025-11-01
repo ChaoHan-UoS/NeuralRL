@@ -271,7 +271,8 @@ def main(args=None):
     # Target Transition Model
     ###########################
     print(f'\nTraining target {args.model} model')
-    project_name = f"model-train-{repr(args.env)}"
+    project_name = f"model-train-{repr(env_tar)}"
+    run_name = f"aug-{args.model}-{args.length}"
     if args.model == 'ode':
         # Augment ODE with trainable remap function
         odeblock.func.requires_grad_(False)
@@ -287,7 +288,7 @@ def main(args=None):
             env_class=env_tar_class,
             env_params=env_tar_params,
             project_name=project_name,
-            name=f"aug-{args.model}-{args.length}",
+            name=run_name,
             N_SAMPLES=args.n_samples,
             EPSILON=1,
             TRAJ_LEN=args.traj_len,
@@ -319,7 +320,7 @@ def main(args=None):
             env_class=env_tar_class,
             env_params=env_tar_params,
             PROJECT=project_name,
-            NAME=f"aug-{args.model}-{args.length}",
+            NAME=run_name,
             F_S=F_S,
             F_A=F_A,
             dt_value=0.02,
@@ -371,7 +372,7 @@ def main(args=None):
             env_params=env_tar_params,
             ens_params=ens_params,
             project_name=project_name,
-            name=f"finetune-ensemble-{args.length}",
+            name=run_name,
             N_SAMPLES=args.n_samples * args.traj_len,
             load_block=ensblock_tar,
             BATCH_SIZE=args.model_batch_size,
