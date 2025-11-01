@@ -116,11 +116,6 @@ def main(args=None):
     print(f"Source Policy checkpoint: {args.policy_ckpt}")
     print(f"Source {args.model} model checkpoint: {args.model_ckpt}")
 
-    # # Adjust num_steps for stochastic env
-    # if args.env == 'stoch' and args.num_steps == 10000:
-    #     args.num_steps = 20000
-    #     print(f"Adjusted num_steps to {args.num_steps} for stochastic env")
-
     ###########################
     # Source and Target Envs
     ###########################

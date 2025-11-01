@@ -27,7 +27,7 @@ from utils.mpc_utils import (
 device = "cuda"
 ENV_DICT = {
     'swimmer': SwimmerStochStiffnessZeroMean,
-    'hopper-gaus': HopperStochWindGaussian,
+    'hopper': HopperStochWindGaussian,
     'walker2d': Walker2dWindGaussian,
     'pomdp-swimmer-no-pos': POMDPSwimmerNoPosition,
     'pomdp-swimmer-no-vel': POMDPSwimmerNoVelocity,
@@ -47,10 +47,10 @@ parser.add_argument('--noise-type', choices=('diagonal', 'scalar'), default='sca
                     help="Noise type: 'diagonal' or 'scalar' (default: 'scalar').")
 parser.add_argument('--cut-len', default=None, type=int,
                     help="Cutoff length for trajectories (default: None).")
-parser.add_argument('--init-data', default=15000, type=int,
-                    help="Initial env steps for collecting training data (default: 15000).")
-parser.add_argument('--init-data-val', default=10000, type=int,
-                    help="Initial env steps for collecting validation data (default: 10000).")
+parser.add_argument('--init-data', default=1500, type=int,
+                    help="Initial env steps for collecting training data (default: 1500).")
+parser.add_argument('--init-data-val', default=1000, type=int,
+                    help="Initial env steps for collecting validation data (default: 1000).")
 parser.add_argument('--k', default=1000, type=int,
                     help="Population size/rollouts in MPC (default: 1000).")
 parser.add_argument('--h', default=10, type=int,
